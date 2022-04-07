@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import './index.css';
+import TextInput from './components/Input';
 
 const KEY = '946cb26e574944edb81221535220604';
 const weatherData = [];
@@ -20,7 +21,11 @@ function App() {
     fetchData().catch((error) => console.log(error));
   }, [api]);
 
-  return <div className="App">hehehe</div>;
+  return (
+    <div className="App">
+      <TextInput></TextInput>
+    </div>
+  );
 }
 
 export default App;
