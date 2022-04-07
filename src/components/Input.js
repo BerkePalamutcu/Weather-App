@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function TextInput() {
-  return <div>Berke</div>;
+  const [text, textChange] = useState('');
+  const handleText = (e) => {
+    textChange(console.log(e.target.value));
+  };
+  return (
+    <div>
+      <form>
+        <input
+          onChange={handleText}
+          className="locationInput"
+          type="text"
+          required
+        ></input>
+        <button type="submit">submit</button>
+      </form>
+    </div>
+  );
 }
 export default TextInput;
