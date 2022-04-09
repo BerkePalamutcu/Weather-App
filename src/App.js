@@ -8,8 +8,7 @@ import TextInput from './components/Input';
 const KEY = '946cb26e574944edb81221535220604';
 
 function App() {
-  const weatherData = [];
-
+  const [weatherData, setWeatherData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
@@ -24,9 +23,10 @@ function App() {
       );
       console.log(data);
       console.log(weatherData);
+      setWeatherData(data);
     };
     fetchData().catch((error) => console.log(error));
-  });
+  }, []);
 
   return (
     <div className="App">
