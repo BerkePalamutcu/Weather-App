@@ -5,7 +5,7 @@ import './App.css';
 import './index.css';
 import TextInput from './components/Input';
 
-const KEY = '946cb26e574944edb81221535220604';
+const key = process.env.REACT_APP_API_KEY;
 
 function App() {
   const [weatherData, setWeatherData] = useState([]);
@@ -15,7 +15,7 @@ function App() {
         `https://api.weatherapi.com/v1/current.json`,
         {
           params: {
-            key: KEY,
+            key: key,
             q: 'kusadasi',
             lang: 'tr',
           },
