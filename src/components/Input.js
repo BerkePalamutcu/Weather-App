@@ -5,31 +5,35 @@ const key = process.env.REACT_APP_API_KEY;
 
 function SearchLocation() {
   const [text, textChange] = useState('');
+  const [weatherData, setWeatherData] = useState([]);
+
   const handleText = (e) => {
     textChange(e.target.value);
   };
-  console.log(text);
-  const [weatherData, setWeatherData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get(
-        `https://api.weatherapi.com/v1/current.json`,
-        {
-          params: {
-            key: key,
-            q: text,
-            lang: 'tr',
-          },
-        }
-      );
 
-      console.log(weatherData);
-      setWeatherData(data);
-      console.log(weatherData);
-    };
-    fetchData().catch((error) => console.log(error));
+  const fetchData = async () => {
+    const { data } = await axios.get(
+      `https://api.weatherapi.com/v1/current.json`,
+      {
+        params: {
+          key: key,
+          q: text,
+          lang: 'tr',
+        },
+      }
+    );
+    setWeatherData(data);
+  };
+
+  useEffect(() => {
+    try {
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
+  console.log(weatherData);
   return (
     <div>
       <form>
