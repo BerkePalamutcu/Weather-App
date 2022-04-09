@@ -6,21 +6,23 @@ import './index.css';
 import TextInput from './components/Input';
 
 const KEY = '946cb26e574944edb81221535220604';
-const weatherData = [];
-const locationData = [];
-console.log(weatherData);
+
 function App() {
-  const api = axios.create({
-    baseURL: 'http://api.weatherapi.com/v1',
-  });
   useEffect(() => {
     const fetchData = async () => {
-      const currentData = await api.get(`/current.json?key=${KEY}&q=kusadasi`);
-      weatherData.push(currentData.data.location);
-      locationData.push(currentData.data);
+      const currentData = await axios.get(
+        `https://api.weatherapi.com/v1/current.json`,
+        {
+          params: {
+            key: KEY,
+            q: 'kusadasi',
+          },
+        }
+      );
+      console.log(currentData.data);
     };
     fetchData().catch((error) => console.log(error));
-  }, [api]);
+  }, []);
 
   return (
     <div className="App">
