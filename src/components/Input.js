@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function TextInput() {
-  const [text, textChange] = useState('');
+  const [text, textChange] = useState('kusadasi');
   const handleText = (e) => {
     textChange(e.target.value);
   };
@@ -15,7 +15,6 @@ function TextInput() {
           value={text}
           required
         ></input>
-        <button type="submit">search</button>
       </form>
     </div>
   );
