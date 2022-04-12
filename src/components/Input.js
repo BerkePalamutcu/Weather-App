@@ -1,39 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
-const key = process.env.REACT_APP_API_KEY;
-
-function SearchLocation() {
-  const [text, textChange] = useState('');
-  const [weatherData, setWeatherData] = useState([]);
+function SearchLocation(props) {
+  const [text, textChange] = useState('kusadasi');
 
   const handleText = (e) => {
     textChange(e.target.value);
   };
 
-  const fetchData = async () => {
-    const { data } = await axios.get(
-      `https://api.weatherapi.com/v1/current.json`,
-      {
-        params: {
-          key: key,
-          q: text,
-          lang: 'tr',
-        },
-      }
-    );
-    setWeatherData(data);
-  };
-
-  useEffect(() => {
-    try {
-      fetchData();
-    } catch (error) {
-      console.log(error);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text]);
-  console.log(weatherData);
+  console.log(props);
   return (
     <div>
       <form>
@@ -45,6 +19,7 @@ function SearchLocation() {
           required
         ></input>
       </form>
+      <div> degrees</div>
     </div>
   );
 }
