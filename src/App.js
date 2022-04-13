@@ -21,7 +21,7 @@ function App() {
         params: {
           key: key,
           q: text,
-          lang: 'tr',
+          lang: 'en',
         },
       }
     );
@@ -29,14 +29,19 @@ function App() {
   };
 
   useEffect(() => {
-    if (text != '') {
-      try {
-        fetchData();
-      } catch (error) {
-        console.log(error);
+    const timeOut = setTimeout(() => {
+      if (text !== '') {
+        try {
+          fetchData();
+        } catch (error) {
+          console.log(error);
+        }
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }
+    }, 2000);
+    return () => {
+      clearTimeout(timeOut);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
   console.log(weatherData);
   return (
