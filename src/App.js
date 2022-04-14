@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import './index.css';
 import SearchLocation from './components/Input';
-
 import axios from 'axios';
 
 const key = process.env.REACT_APP_API_KEY;
