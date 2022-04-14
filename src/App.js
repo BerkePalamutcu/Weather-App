@@ -12,7 +12,6 @@ function App() {
   const { location, current } = weatherData;
 
   const handleText = (e) => {
-    e.preventDefault();
     textChange(e.target.value);
   };
   const fetchData = async () => {

@@ -34,7 +34,7 @@ body {
   line-height: 2.1rem;
 }
 h1 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: white;
   animation: text-focus-in 1s cubic-bezier(0.47, 0, 0.745, 0.715) both;
