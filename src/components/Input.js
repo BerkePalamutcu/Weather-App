@@ -7,8 +7,9 @@ function SearchLocation({ handleText, text }) {
           className="locationInput"
           type="text"
           value={text}
+          placeholder="Search Location"
           required
-        ></input>
+        />
       </form>
     </div>
   );
