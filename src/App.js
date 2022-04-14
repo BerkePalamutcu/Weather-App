@@ -66,7 +66,6 @@ function App() {
         <h1>
           {current ? `Last update: ${current.last_updated} LT` : undefined}
         </h1>
-        <h1>Merve Seni seviyorum</h1>
       </div>
     </div>
   );
