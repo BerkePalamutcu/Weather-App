@@ -51,8 +51,8 @@ function App() {
     <div className="App">
       <SearchLocation handleText={handleText} text={text}></SearchLocation>
       <div key={Math.random()} className="weatherCard">
-        <h1>{location ? `Country : ${location.country}` : undefined}</h1>
-        <h1>{location ? `City Name: ${location.name}` : undefined}</h1>
+        <h1>{location ? ` ${location.country}` : undefined}</h1>
+        <h1>{location ? ` ${location.name}` : undefined}</h1>
         <hr></hr>
         <h1>{current ? `Current: ${current.temp_c} degrees` : undefined}</h1>
         <h1>
@@ -66,6 +66,7 @@ function App() {
         <h1>
           {current ? `Last update: ${current.last_updated} LT` : undefined}
         </h1>
+        <h1>Merve Seni seviyorum</h1>
       </div>
     </div>
   );

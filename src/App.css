@@ -34,6 +34,7 @@ body {
   line-height: 2.1rem;
 }
 h1 {
+  display: flex;
   font-size: 16px;
   font-weight: 600;
   color: white;
