@@ -40,13 +40,14 @@ function App() {
           console.log(error);
         }
       }
-    }, 500);
+    }, 300);
     return () => {
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
   console.log(current);
+
   return (
     <div className="App">
       <SearchLocation handleText={handleText} text={text}></SearchLocation>

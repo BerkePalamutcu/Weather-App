@@ -37,7 +37,7 @@ h1 {
   font-size: 20px;
   font-weight: 600;
   color: white;
-  animation: text-focus-in 4s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+  animation: text-focus-in 1s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
 hr {
   margin: 10px 0 10px 0;
