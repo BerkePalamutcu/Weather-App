@@ -41,12 +41,12 @@ function App() {
           console.log(error);
         }
       }
-    }, 5000);
+    }, 500);
     return () => {
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text, weatherData]);
+  }, [text]);
   console.log(current);
   return (
     <div className="App">

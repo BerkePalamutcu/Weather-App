@@ -1,7 +1,7 @@
 function SearchLocation({ handleText, text }) {
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input
           onChange={handleText}
           className="locationInput"
