@@ -10,7 +10,7 @@ const key = process.env.REACT_APP_API_KEY;
 function App() {
   const [text, textChange] = useState('');
   const [weatherData, setWeatherData] = useState([]);
-  const [clicked, setClicked] = useState(null);
+  const [, setClicked] = useState(null);
   const { location, current } = weatherData;
 
   const handleText = (e) => {
@@ -19,6 +19,7 @@ function App() {
   const handleClick = () => {
     setClicked(fetchData);
   };
+
   const fetchData = async () => {
     if (setClicked) {
       const { data } = await axios.get(
@@ -45,7 +46,7 @@ function App() {
           console.log(error);
         }
       }
-    }, 300);
+    }, 200);
     return () => {
       clearTimeout(timeOut);
     };
@@ -62,6 +63,7 @@ function App() {
         handleClick={handleClick}
       ></SearchLocation>
       <div
+        style={location ? location : { display: 'none' }}
         key={location ? location.name : Math.random()}
         className="weatherCard"
       >
