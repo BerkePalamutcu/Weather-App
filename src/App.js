@@ -6,22 +6,28 @@ import SearchLocation from './components/Input';
 import axios from 'axios';
 
 const key = process.env.REACT_APP_API_KEY;
+
 function App() {
   const [text, textChange] = useState('');
   const [weatherData, setWeatherData] = useState([]);
+  const [clicked, setClicked] = useState(null);
   const { location, current } = weatherData;
 
   const handleText = (e) => {
     textChange(e.target.value);
   };
+  const handleClick = () => {
+    setClicked(fetchData);
+  };
   const fetchData = async () => {
-    if (text) {
+    if (setClicked) {
       const { data } = await axios.get(
-        `https://api.weatherapi.com/v1/current.json`,
+        `https://api.weatherapi.com/v1/forecast.json`,
         {
           params: {
             key: key,
             q: text,
+            days: '7',
             lang: 'en',
           },
         }
@@ -32,7 +38,7 @@ function App() {
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      if (text !== '') {
+      if (text !== '' && setClicked) {
         try {
           fetchData();
         } catch (error) {
@@ -44,13 +50,21 @@ function App() {
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text]);
+  }, [setClicked]);
   console.log(current);
+  console.log(weatherData);
 
   return (
     <div className="App">
-      <SearchLocation handleText={handleText} text={text}></SearchLocation>
-      <div key={Math.random()} className="weatherCard">
+      <SearchLocation
+        handleText={handleText}
+        text={text}
+        handleClick={handleClick}
+      ></SearchLocation>
+      <div
+        key={location ? location.name : Math.random()}
+        className="weatherCard"
+      >
         <h1>{location ? ` ${location.country}` : undefined}</h1>
         <h1>{location ? ` ${location.name}` : undefined}</h1>
         <hr></hr>
