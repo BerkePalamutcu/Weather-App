@@ -11,6 +11,7 @@ function App() {
   const [text, textChange] = useState('');
   const [weatherData, setWeatherData] = useState([]);
   const [, setClicked] = useState(null);
+  const [err, setErr] = useState(null);
   const { location, current } = weatherData;
 
   const handleText = (e) => {
@@ -21,30 +22,31 @@ function App() {
   };
 
   const fetchData = async () => {
-    if (setClicked) {
-      const { data } = await axios.get(
-        `https://api.weatherapi.com/v1/forecast.json`,
-        {
-          params: {
-            key: key,
-            q: text,
-            days: '7',
-            lang: 'en',
-          },
-        }
-      );
-      setWeatherData(data);
+    if (setClicked && text !== '') {
+      try {
+        const { data } = await axios.get(
+          `https://api.weatherapi.com/v1/forecast.json`,
+          {
+            params: {
+              key: key,
+              q: text,
+              lang: 'en',
+              days: '10',
+            },
+          }
+        );
+        setWeatherData(data);
+      } catch (error) {
+        setErr(error);
+        alert(err.message);
+      }
     }
   };
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      if (text !== '' && setClicked) {
-        try {
-          fetchData();
-        } catch (error) {
-          console.log(error);
-        }
+      if (setClicked) {
+        fetchData();
       }
     }, 200);
     return () => {
