@@ -31,7 +31,7 @@ function App() {
               key: key,
               q: text,
               lang: 'en',
-              days: '10',
+              days: '5',
             },
           }
         );
@@ -54,8 +54,6 @@ function App() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setClicked]);
-  console.log(current);
-  console.log(weatherData);
 
   return (
     <div className="App">
