@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url(https://i.ibb.co/R9hwSbx/bg.jpg);
+  background: url(./assets/backgroundimage.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
